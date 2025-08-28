@@ -19,7 +19,7 @@ router.get("/filter", (req, res) => {
 router.get("/:id", (req, res) => {
   expenseController.getOne(req, res);
 });
-
+  
 // Route to get all expenses
 router.get("/", (req, res) => {
   expenseController.getAll(req, res);
@@ -28,6 +28,35 @@ router.get("/", (req, res) => {
 // Route to add a tag to a specific expense
 router.post("/:id/tags", (req, res) => {
   expenseController.addTag(req, res);
+});
+
+// Route to update a tag within a specific expense
+router.patch("/:id/tags", (req, res) => {
+  expenseController.updateTag(req, res);
+});
+
+// Route to delete a tag from a specific expense
+router.delete("/:id/tags/:tag", (req, res) => {
+  expenseController.deleteTag(req, res);
+});
+
+
+// -----------Above is previous code-------------
+
+
+// Route to aggregate total revenue for each product
+router.get("/aggregate/total-revenue", (req, res) => {
+  expenseController.aggregateTotalRevenue(req, res);
+});
+
+// Route to group expenses by tags
+router.get("/group/by-tags", (req, res) => {
+  expenseController.groupExpensesByTags(req, res);
+});
+
+// Route to group and calculate average by recurring status
+router.get("/group/avg-by-recurring", (req, res) => {
+  expenseController.groupAndCalculateAvgByRecurring(req, res);
 });
 
 export default router;
